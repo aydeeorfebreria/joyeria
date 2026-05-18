@@ -1,25 +1,55 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useLanguage } from "@/app/context/LanguageContext";
 
 const slides = [
-  "Diseños únicos en oro",
-  "Joyas personalizadas",
-  "Arte hecho a mano",
-  "Elegancia atemporal",
+  {
+    texto: {
+      es: "Argollas artesanales",
+      en: "Handcrafted wedding bands",
+    },
+    imagen: "/hero/slide1.jpg",
+  },
+  {
+    texto: {
+      es: "Cadenas exclusivas",
+      en: "Exclusive chains",
+    },
+    imagen: "/hero/slide2.jpg",
+  },
+  {
+    texto: {
+      es: "Topos elegantes",
+      en: "Elegant earrings",
+    },
+    imagen: "/hero/slide3.jpg",
+  },
+  {
+    texto: {
+      es: "Candongas únicas",
+      en: "Unique hoop earrings",
+    },
+    imagen: "/hero/slide4.jpg",
+  },
 ];
 
 export default function Carousel() {
-  const [index, setIndex] = useState(0);
 
-  // Auto play
+  const [index, setIndex] = useState(0);
+  const { language } = useLanguage();
+
   useEffect(() => {
+
     const interval = setInterval(() => {
-      nextSlide();
-    }, 4000);
+
+      setIndex((prev) => (prev + 1) % slides.length);
+
+    }, 5000);
 
     return () => clearInterval(interval);
-  }, [index]);
+
+  }, []);
 
   const nextSlide = () => {
     setIndex((prev) => (prev + 1) % slides.length);
@@ -30,45 +60,64 @@ export default function Carousel() {
   };
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center text-center bg-gray-100 relative">
-      
-      {/* TEXTO */}
-      <h2 className="text-4xl md:text-6xl font-bold text-black mb-6 transition-all">
-        {slides[index]}
-      </h2>
 
-      {/* NUMERO */}
-      <span className="text-sm text-gray-500 mb-4">
-        {index + 1} / {slides.length}
-      </span>
+    <section className="relative h-[75vh] overflow-hidden pt-24">
 
-      {/* FLECHAS */}
+      {/* IMAGEN */}
+      <img
+        src={slides[index].imagen}
+        alt={slides[index].texto[language]}
+        className="absolute inset-0 w-full h-full object-cover object-center"
+      />
+
+      {/* OVERLAY OSCURO */}
+      <div className="absolute inset-0 bg-black/40" />
+
+      {/* CONTENIDO */}
+      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
+
+        <h1 className="text-white text-5xl md:text-7xl font-bold max-w-5xl">
+        {slides[index].texto[language]}
+        </h1>
+
+      </div>
+
+      {/* IZQUIERDA */}
       <button
         onClick={prevSlide}
-        className="absolute left-6 top-1/2 -translate-y-1/2 text-3xl text-black hover:text-yellow-500"
+        className="absolute left-6 top-1/2 -translate-y-1/2 text-white text-5xl z-20"
       >
         ←
       </button>
 
+      {/* DERECHA */}
       <button
         onClick={nextSlide}
-        className="absolute right-6 top-1/2 -translate-y-1/2 text-3xl text-black hover:text-yellow-500"
+        className="absolute right-6 top-1/2 -translate-y-1/2 text-white text-5xl z-20"
       >
         →
       </button>
 
       {/* INDICADORES */}
-      <div className="absolute bottom-10 flex gap-2">
+      <div className="absolute bottom-10 w-full flex justify-center gap-3 z-20">
+
         {slides.map((_, i) => (
+
           <button
             key={i}
             onClick={() => setIndex(i)}
-            className={`w-3 h-3 rounded-full ${
-              i === index ? "bg-yellow-500" : "bg-gray-400"
+            className={`w-4 h-4 rounded-full ${
+              i === index
+                ? "bg-yellow-500"
+                : "bg-white/50"
             }`}
           />
+
         ))}
+
       </div>
-    </div>
+
+    </section>
+
   );
 }

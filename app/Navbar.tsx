@@ -1,31 +1,161 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
+import { useLanguage } from "@/app/context/LanguageContext";
 
 export default function Navbar() {
-  return (
-    <nav className="fixed top-0 w-full bg-black/90 backdrop-blur z-50 px-6 py-4 flex justify-between items-center">
-      
-      {/* LOGO */}
-      <h1 className="text-xl font-bold text-yellow-500">
-        Aydee Orfebre
-      </h1>
 
-      {/* MENU */}
-      <div className="flex gap-6 text-sm text-white">
-        <Link href="/" className="hover:text-yellow-400 transition">
-          Home
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const { language, setLanguage } = useLanguage();
+
+  return (
+
+    <nav className="fixed top-0 left-0 w-full bg-black z-50 shadow-lg">
+
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+
+        {/* LOGO */}
+        <Link
+          href="/"
+          className="text-yellow-500 text-3xl font-bold"
+        >
+          Aydee Orfebre
         </Link>
-        <Link href="/about" className="hover:text-yellow-400 transition">
-          About us
-        </Link>
-        <Link href="/catalogo" className="hover:text-yellow-400 transition">
-          Products
-        </Link>
-        <Link href="/contact" className="hover:text-yellow-400 transition">
-          Contacts
-        </Link>
+
+        {/* RIGHT SIDE */}
+        <div className="flex items-center gap-6">
+
+          {/* DESKTOP MENU */}
+          <div className="hidden xl:flex gap-8 text-white">
+
+          <Link href="/" className="hover:text-yellow-500 transition">
+            Inicio
+          </Link>
+
+          <Link href="/about" className="hover:text-yellow-500 transition">
+            Acerca de nosotros
+          </Link>
+
+          <Link href="/catalogo" className="hover:text-yellow-500 transition">
+            Catálogo
+          </Link>
+
+          <Link href="/contact" className="hover:text-yellow-500 transition">
+            Contáctenos
+          </Link>
+
+          </div>
+
+          {/* LANGUAGE SELECTOR DESKTOP */}
+          <div className="hidden xl:flex items-center gap-3">
+
+            <button
+              onClick={() => setLanguage("es")}
+              className={`px-3 py-1 rounded-full text-sm font-semibold transition ${
+                language === "es"
+                  ? "bg-yellow-500 text-black"
+                  : "bg-white/10 text-white"
+              }`}
+            >
+              🇨🇴 ES
+            </button>
+
+            <button
+              onClick={() => setLanguage("en")}
+              className={`px-3 py-1 rounded-full text-sm font-semibold transition ${
+                language === "en"
+                  ? "bg-yellow-500 text-black"
+                  : "bg-white/10 text-white"
+              }`}
+            >
+              🇺🇸 ENG
+            </button>
+
+          </div>
+
+          {/* MOBILE BUTTON */}
+          <button
+            className="xl:hidden text-white text-4xl"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            ☰
+          </button>
+
+        </div>
+
       </div>
+
+      {/* MOBILE MENU */}
+      {menuOpen && (
+
+        <div className="xl:hidden bg-black px-6 py-6 border-t border-gray-800">
+
+          <div className="flex flex-col space-y-6 text-white text-xl">
+
+            <Link
+              href="/"
+              onClick={() => setMenuOpen(false)}
+            >
+              Home
+            </Link>
+
+            <Link
+              href="/about"
+              onClick={() => setMenuOpen(false)}
+            >
+              About Us
+            </Link>
+
+            <Link
+              href="/catalogo"
+              onClick={() => setMenuOpen(false)}
+            >
+              Products
+            </Link>
+
+            <Link
+              href="/contact"
+              onClick={() => setMenuOpen(false)}
+            >
+              Contacts
+            </Link>
+
+            {/* LANGUAGE SELECTOR MOBILE */}
+            <div className="flex gap-3 pt-4">
+
+              <button
+                onClick={() => setLanguage("es")}
+                className={`px-3 py-1 rounded-full text-sm font-semibold transition ${
+                  language === "es"
+                    ? "bg-yellow-500 text-black"
+                    : "bg-white/10 text-white"
+                }`}
+              >
+                🇨🇴 ES
+              </button>
+
+              <button
+                onClick={() => setLanguage("en")}
+                className={`px-3 py-1 rounded-full text-sm font-semibold transition ${
+                  language === "en"
+                    ? "bg-yellow-500 text-black"
+                    : "bg-white/10 text-white"
+                }`}
+              >
+                🇺🇸 ENG
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      )}
+
     </nav>
+
   );
 }
