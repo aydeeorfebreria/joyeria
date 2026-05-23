@@ -1,10 +1,61 @@
-import Image from "next/image";
+"use client";
 
+import Image from "next/image";
+import { useState } from "react";
 import Navbar from "@/app/Navbar";
 import Footer from "@/app/Footer";
 import WhatsAppButton from "@/app/WhatsAppButton";
 
 export default function ContactPage() {
+
+  const [nombre, setNombre] = useState("");
+  const [email, setEmail] = useState("");
+  const [mensaje, setMensaje] = useState("");
+
+  const handleSubmit = async (
+    e: React.FormEvent
+  ) => {
+
+    e.preventDefault();
+
+    try {
+
+      const response = await fetch("/api/contact", {
+
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({
+          nombre,
+          email,
+          mensaje,
+        }),
+      });
+
+      if (response.ok) {
+
+        alert("Solicitud enviada correctamente");
+
+        setNombre("");
+        setEmail("");
+        setMensaje("");
+
+      } else {
+
+        alert("Error enviando solicitud");
+
+      }
+
+    } catch (error) {
+
+      alert("Error del servidor");
+
+    }
+  };
+
   return (
     <main className="bg-white text-black min-h-screen">
 
@@ -43,23 +94,32 @@ export default function ContactPage() {
             </p>
 
             {/* FORM */}
-            <form className="space-y-5">
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-5"
+            >
 
               <input
                 type="text"
                 placeholder="Nombre completo"
+                value={nombre}
+                onChange={(e) => setNombre(e.target.value)}
                 className="w-full border border-gray-300 rounded-xl px-5 py-4 focus:outline-none focus:border-yellow-500"
               />
 
               <input
                 type="email"
                 placeholder="Correo electrónico"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full border border-gray-300 rounded-xl px-5 py-4 focus:outline-none focus:border-yellow-500"
               />
 
               <textarea
                 placeholder="Escribe tu mensaje..."
                 rows={5}
+                value={mensaje}
+                onChange={(e) => setMensaje(e.target.value)}
                 className="w-full border border-gray-300 rounded-xl px-5 py-4 focus:outline-none focus:border-yellow-500"
               />
 
