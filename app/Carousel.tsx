@@ -67,7 +67,7 @@ export default function Carousel() {
       <img
         src={slides[index].imagen}
         alt={slides[index].texto[language]}
-        className="absolute inset-0 w-full h-full object-cover object-center"
+        className="absolute inset-0 w-full h-full object-contain bg-white"
       />
 
       {/* OVERLAY OSCURO */}

@@ -38,22 +38,28 @@ export default function AboutPage() {
             </h1>
 
             <p className="text-gray-700 text-lg leading-8 mb-6">
-              Somos una empresa netamente familiar fundada en el año 1987,
-              nacida de la pasión y dedicación de un matrimonio de orfebres
-              que inició elaborando joyas para reconocidas joyerías de la ciudad de Cali.
-            </p>
 
-            <p className="text-gray-700 text-lg leading-8 mb-6">
-              Con el paso de los años, nuestra experiencia artesanal y compromiso
-              con la excelencia nos han permitido mantener viva una tradición
-              basada en el detalle, la elegancia y el trabajo hecho completamente a mano.
-            </p>
+Nuestra historia nace de la pasión por la orfebrería artesanal y más de cuatro décadas dedicadas al arte de crear joyas exclusivas.
 
-            <p className="text-gray-700 text-lg leading-8">
-              Hoy en día continuamos ofreciendo servicios de elaboración de joyas
-              personalizadas en oro y plata, creando piezas únicas que reflejan
-              la esencia y estilo de cada cliente.
-            </p>
+</p>
+
+<p className="text-gray-700 text-lg leading-8 mb-6">
+
+Desde los años 70's, nuestra fundadora inició su trayectoria trabajando junto a reconocidos joyeros de Cali, participando en importantes talleres como Platería Ramírez. Durante los años 80's y 90's, hizo parte del equipo de prestigiosas joyerías como Victoria Gemologos y Joyería L'amour, consolidando una amplia experiencia en la elaboración de piezas únicas en oro y plata.
+
+</p>
+
+<p className="text-gray-700 text-lg leading-8 mb-6">
+
+Posteriormente, en 1995 hasta el 2008, estuvo al frente de la administración de Joyería Majesty, fortaleciendo aún más su conocimiento en el mundo de la joyería y la atención personalizada a sus clientes.
+
+</p>
+
+<p className="text-gray-700 text-lg leading-8">
+
+Hoy en día, continuamos esta tradición desde nuestro taller artesanal, creando joyas  personalizadas para quienes buscan elegancia, exclusividad, calidad y autenticidad en cada detalle.
+
+</p>
 
           </div>
 
