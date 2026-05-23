@@ -98,28 +98,28 @@ export default function Navbar() {
               href="/"
               onClick={() => setMenuOpen(false)}
             >
-              Home
+              Inicio
             </Link>
 
             <Link
               href="/about"
               onClick={() => setMenuOpen(false)}
             >
-              About Us
+              Acerca de nosotros
             </Link>
 
             <Link
               href="/catalogo"
               onClick={() => setMenuOpen(false)}
             >
-              Products
+              Productos
             </Link>
 
             <Link
               href="/contact"
               onClick={() => setMenuOpen(false)}
             >
-              Contacts
+              Contactenos
             </Link>
 
             {/* LANGUAGE SELECTOR MOBILE */}
