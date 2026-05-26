@@ -15,7 +15,7 @@ export async function POST(req: Request) {
 
       from: "Aydee Orfebre <onboarding@resend.dev>",
 
-      to: ["jlriofrio@gmail.com"],
+      to: ["lamirimu@gmail.com"],
 
       subject: "Nueva solicitud desde la página web",
 
