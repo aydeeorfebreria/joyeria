@@ -243,10 +243,15 @@ export async function POST(req: Request) {
 
   } catch (error) {
 
+    console.error("ERROR RESEND:", error);
+  
     return Response.json(
-      { error },
+      {
+        error: "Error enviando correo",
+        details: error,
+      },
       { status: 500 }
     );
-
+  
   }
 }
