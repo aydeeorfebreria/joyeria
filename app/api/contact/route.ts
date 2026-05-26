@@ -1,6 +1,7 @@
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+console.log("API KEY:", process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
 
@@ -14,7 +15,7 @@ export async function POST(req: Request) {
 
       from: "Aydee Orfebre <onboarding@resend.dev>",
 
-      to: ["lamirimu@gmail.com"],
+      to: ["jlriofrio@gmail.com"],
 
       subject: "Nueva solicitud desde la página web",
 
