@@ -14,7 +14,7 @@ export async function POST(req: Request) {
 
       from: "Aydee Orfebre <onboarding@resend.dev>",
 
-      to: ["jlriofrio@gmail.com"],
+      to: ["lamirimu@gmail.com"],
 
       subject: "Nueva solicitud desde la página web",
 
@@ -143,7 +143,7 @@ export async function POST(req: Request) {
                     ">
 
                     <img
-                    src="https://joyeria-tau.vercel.app/email.png"
+                    src="https://joyeria-tau.vercel.app/mail.png"
                         width="45"
                         alt="Email"
                         style="margin-bottom:15px;"
