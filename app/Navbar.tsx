@@ -12,7 +12,7 @@ export default function Navbar() {
 
   return (
 
-    <nav className="fixed top-0 left-0 w-full bg-black z-50 shadow-lg">
+    <nav className="fixed top-0 left-0 w-full bg-white z-50 shadow-lg">
 
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
 
@@ -34,7 +34,7 @@ export default function Navbar() {
         <div className="flex items-center gap-6">
 
           {/* DESKTOP MENU */}
-          <div className="hidden xl:flex gap-8 text-white">
+          <div className="hidden xl:flex gap-8 text-black">
 
           <Link href="/" className="hover:text-yellow-500 transition">
             Inicio
@@ -62,7 +62,7 @@ export default function Navbar() {
               className={`px-3 py-1 rounded-full text-sm font-semibold transition ${
                 language === "es"
                   ? "bg-yellow-500 text-black"
-                  : "bg-white/10 text-white"
+                  : "bg-white/10 text-black"
               }`}
             >
               🇨🇴 ES
@@ -73,7 +73,7 @@ export default function Navbar() {
               className={`px-3 py-1 rounded-full text-sm font-semibold transition ${
                 language === "en"
                   ? "bg-yellow-500 text-black"
-                  : "bg-white/10 text-white"
+                  : "bg-white/10 text-black"
               }`}
             >
               🇺🇸 ENG
@@ -83,7 +83,7 @@ export default function Navbar() {
 
           {/* MOBILE BUTTON */}
           <button
-            className="xl:hidden text-white text-4xl"
+            className="xl:hidden text-black text-4xl"
             onClick={() => setMenuOpen(!menuOpen)}
           >
             ☰
@@ -96,9 +96,9 @@ export default function Navbar() {
       {/* MOBILE MENU */}
       {menuOpen && (
 
-        <div className="xl:hidden bg-black px-6 py-6 border-t border-gray-800">
+        <div className="xl:hidden bg-white px-6 py-6 border-t border-gray-800">
 
-          <div className="flex flex-col space-y-6 text-white text-xl">
+          <div className="flex flex-col space-y-6 text-black text-xl">
 
             <Link
               href="/"
@@ -136,7 +136,7 @@ export default function Navbar() {
                 className={`px-3 py-1 rounded-full text-sm font-semibold transition ${
                   language === "es"
                     ? "bg-yellow-500 text-black"
-                    : "bg-white/10 text-white"
+                    : "bg-white/10 text-black"
                 }`}
               >
                 🇨🇴 ES
@@ -147,7 +147,7 @@ export default function Navbar() {
                 className={`px-3 py-1 rounded-full text-sm font-semibold transition ${
                   language === "en"
                     ? "bg-yellow-500 text-black"
-                    : "bg-white/10 text-white"
+                    : "bg-white/10 text-black"
                 }`}
               >
                 🇺🇸 ENG
