@@ -19,9 +19,15 @@ export default function Navbar() {
         {/* LOGO */}
         <Link
           href="/"
-          className="text-yellow-500 text-3xl font-bold"
+          className="flex items-center"
         >
-          Aydee Orfebre
+
+          <img
+            src="/logo.png"
+            alt="Aydee Orfebre"
+            className="h-20 w-auto"
+          />
+
         </Link>
 
         {/* RIGHT SIDE */}
