@@ -1,7 +1,28 @@
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-console.log("API KEY:", process.env.RESEND_API_KEY);
+const fromEmail =
+  process.env.RESEND_FROM_EMAIL ?? "Aydee Orfebre <onboarding@resend.dev>";
+const recipients = (
+  process.env.CONTACT_RECIPIENTS ??
+  "jlriofrio@gmail.com,lamirimu@gmail.com,auramariacr@hotmail.com"
+)
+  .split(",")
+  .map((email) => email.trim())
+  .filter(Boolean);
+
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function isValidEmail(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
 
 export async function POST(req: Request) {
 
@@ -11,15 +32,45 @@ export async function POST(req: Request) {
 
     const { nombre, email, mensaje } = body;
 
+    if (
+      typeof nombre !== "string" ||
+      typeof email !== "string" ||
+      typeof mensaje !== "string"
+    ) {
+      return Response.json(
+        { error: "Datos incompletos" },
+        { status: 400 }
+      );
+    }
+
+    const cleanNombre = nombre.trim();
+    const cleanEmail = email.trim();
+    const cleanMensaje = mensaje.trim();
+
+    if (!cleanNombre || !isValidEmail(cleanEmail) || !cleanMensaje) {
+      return Response.json(
+        { error: "Datos inválidos" },
+        { status: 400 }
+      );
+    }
+
+    if (!process.env.RESEND_API_KEY || recipients.length === 0) {
+      console.error("Configuración de correo incompleta");
+      return Response.json(
+        { error: "Servicio de correo no configurado" },
+        { status: 500 }
+      );
+    }
+
+    const safeNombre = escapeHtml(cleanNombre);
+    const safeEmail = escapeHtml(cleanEmail);
+    const safeMensaje = escapeHtml(cleanMensaje).replace(/\n/g, "<br />");
+
     const data = await resend.emails.send({
 
-      from: "Aydee Orfebre <onboarding@resend.dev>",
+      from: fromEmail,
 
-      to: [
-        "jlriofrio@gmail.com",
-        "lamirimu@gmail.com",
-        "auramariacr@hotmail.com",
-      ],
+      to: recipients,
 
       subject: "Nueva solicitud desde la página web",
 
@@ -128,7 +179,7 @@ export async function POST(req: Request) {
                         font-size:28px;
                         font-weight:bold;
                       ">
-                        ${nombre}
+                        ${safeNombre}
                       </p>
       
                     </div>
@@ -170,7 +221,7 @@ export async function POST(req: Request) {
                         color:#111;
                         font-size:24px;
                       ">
-                        ${email}
+                        ${safeEmail}
                       </p>
       
                     </div>
@@ -205,7 +256,7 @@ export async function POST(req: Request) {
                         font-size:20px;
                         line-height:34px;
                       ">
-                        ${mensaje}
+                        ${safeMensaje}
                       </p>
       
                     </div>
@@ -253,7 +304,6 @@ export async function POST(req: Request) {
     return Response.json(
       {
         error: "Error enviando correo",
-        details: error,
       },
       { status: 500 }
     );

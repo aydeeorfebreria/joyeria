@@ -1,20 +1,22 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { useLanguage } from "@/app/context/LanguageContext";
+import { useLanguage, useTranslations } from "@/app/context/LanguageContext";
 
 export default function Navbar() {
 
   const [menuOpen, setMenuOpen] = useState(false);
 
   const { language, setLanguage } = useLanguage();
+  const t = useTranslations();
 
   return (
 
-    <nav className="fixed top-0 left-0 w-full bg-white z-50 shadow-lg">
+    <nav className="fixed top-0 left-0 w-full bg-white/95 backdrop-blur z-50 border-b border-[#efe7d8]">
 
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-3">
 
         {/* LOGO */}
         <Link
@@ -22,10 +24,13 @@ export default function Navbar() {
           className="flex items-center"
         >
 
-          <img
+          <Image
             src="/logo.png"
             alt="Aydee Orfebre"
-            className="h-20 w-auto"
+            width={160}
+            height={80}
+            className="h-16 w-auto"
+            priority
           />
 
         </Link>
@@ -34,22 +39,22 @@ export default function Navbar() {
         <div className="flex items-center gap-6">
 
           {/* DESKTOP MENU */}
-          <div className="hidden xl:flex gap-8 text-black">
+          <div className="hidden xl:flex gap-8 text-sm tracking-wide text-[#2a231a]">
 
-          <Link href="/" className="hover:text-yellow-500 transition">
-            Inicio
+          <Link href="/" className="hover:text-[var(--gold)] transition">
+            {t.nav.home}
           </Link>
 
-          <Link href="/about" className="hover:text-yellow-500 transition">
-            Acerca de nosotros
+          <Link href="/about" className="hover:text-[var(--gold)] transition">
+            {t.nav.about}
           </Link>
 
-          <Link href="/catalogo" className="hover:text-yellow-500 transition">
-            Catálogo
+          <Link href="/catalogo" className="hover:text-[var(--gold)] transition">
+            {t.nav.catalog}
           </Link>
 
-          <Link href="/contact" className="hover:text-yellow-500 transition">
-            Contáctenos
+          <Link href="/contact" className="hover:text-[var(--gold)] transition">
+            {t.nav.contact}
           </Link>
 
           </div>
@@ -61,22 +66,22 @@ export default function Navbar() {
               onClick={() => setLanguage("es")}
               className={`px-3 py-1 rounded-full text-sm font-semibold transition ${
                 language === "es"
-                  ? "bg-yellow-500 text-black"
-                  : "bg-white/10 text-black"
+                  ? "bg-[var(--gold)] text-black"
+                  : "bg-[#f7efe1] text-[#2a231a]"
               }`}
             >
-              🇨🇴 ES
+              ES
             </button>
 
             <button
               onClick={() => setLanguage("en")}
               className={`px-3 py-1 rounded-full text-sm font-semibold transition ${
                 language === "en"
-                  ? "bg-yellow-500 text-black"
-                  : "bg-white/10 text-black"
+                  ? "bg-[var(--gold)] text-black"
+                  : "bg-[#f7efe1] text-[#2a231a]"
               }`}
             >
-              🇺🇸 ENG
+              EN
             </button>
 
           </div>
@@ -84,6 +89,7 @@ export default function Navbar() {
           {/* MOBILE BUTTON */}
           <button
             className="xl:hidden text-black text-4xl"
+            aria-label={t.nav.openMenu}
             onClick={() => setMenuOpen(!menuOpen)}
           >
             ☰
@@ -96,7 +102,7 @@ export default function Navbar() {
       {/* MOBILE MENU */}
       {menuOpen && (
 
-        <div className="xl:hidden bg-white px-6 py-6 border-t border-gray-800">
+        <div className="xl:hidden bg-white px-6 py-6 border-t border-[#efe7d8]">
 
           <div className="flex flex-col space-y-6 text-black text-xl">
 
@@ -104,28 +110,28 @@ export default function Navbar() {
               href="/"
               onClick={() => setMenuOpen(false)}
             >
-              Inicio
+              {t.nav.home}
             </Link>
 
             <Link
               href="/about"
               onClick={() => setMenuOpen(false)}
             >
-              Acerca de nosotros
+              {t.nav.about}
             </Link>
 
             <Link
               href="/catalogo"
               onClick={() => setMenuOpen(false)}
             >
-              Productos
+              {t.nav.products}
             </Link>
 
             <Link
               href="/contact"
               onClick={() => setMenuOpen(false)}
             >
-              Contactenos
+              {t.nav.contact}
             </Link>
 
             {/* LANGUAGE SELECTOR MOBILE */}
@@ -135,22 +141,22 @@ export default function Navbar() {
                 onClick={() => setLanguage("es")}
                 className={`px-3 py-1 rounded-full text-sm font-semibold transition ${
                   language === "es"
-                    ? "bg-yellow-500 text-black"
-                    : "bg-white/10 text-black"
+                    ? "bg-[var(--gold)] text-black"
+                    : "bg-[#f7efe1] text-black"
                 }`}
               >
-                🇨🇴 ES
+                ES
               </button>
 
               <button
                 onClick={() => setLanguage("en")}
                 className={`px-3 py-1 rounded-full text-sm font-semibold transition ${
                   language === "en"
-                    ? "bg-yellow-500 text-black"
-                    : "bg-white/10 text-black"
+                    ? "bg-[var(--gold)] text-black"
+                    : "bg-[#f7efe1] text-black"
                 }`}
               >
-                🇺🇸 ENG
+                EN
               </button>
 
             </div>

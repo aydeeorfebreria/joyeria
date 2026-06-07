@@ -1,9 +1,14 @@
-import fs from "fs";
-import path from "path";
+import { notFound } from "next/navigation";
 
 import Navbar from "@/app/Navbar";
 import Footer from "@/app/Footer";
 import WhatsAppButton from "@/app/WhatsAppButton";
+import CategoryContent from "@/app/catalogo/[categoria]/CategoryContent";
+import {
+  getCatalogCategories,
+  getCategoryBySlug,
+  getCategoryImages,
+} from "@/app/lib/catalog";
 
 type Props = {
   params: Promise<{
@@ -11,75 +16,25 @@ type Props = {
   }>;
 };
 
+export const dynamicParams = false;
+
 export default async function CategoriaPage({ params }: Props) {
-
   const { categoria } = await params;
+  const category = getCategoryBySlug(categoria);
 
-  // Capitalizar nombre carpeta
-  const nombreCarpeta =
-    categoria.charAt(0).toUpperCase() + categoria.slice(1);
+  if (!category) {
+    notFound();
+  }
 
-  // Ruta carpeta
-  const rutaCarpeta = path.join(
-    process.cwd(),
-    `public/joyas/images/${nombreCarpeta}`
-  );
-
-  // Leer imágenes
-  const archivos = fs.readdirSync(rutaCarpeta);
-
-  const imagenes = archivos.filter((archivo) =>
-    [".jpg", ".jpeg", ".png", ".webp"].includes(
-      path.extname(archivo).toLowerCase()
-    )
-  );
+  const imagenes = getCategoryImages(category.name);
 
   return (
-    <main className="bg-white text-black min-h-screen">
+    <main className="page-shell text-[#17130d] min-h-screen">
 
       {/* NAVBAR */}
       <Navbar />
 
-      {/* HEADER */}
-      <section className="pt-32 pb-16 text-center px-6">
-
-        <h1 className="text-5xl font-bold text-yellow-500 mb-4">
-          {nombreCarpeta}
-        </h1>
-
-        <p className="text-gray-600 text-lg">
-          Descubre nuestra colección artesanal de {nombreCarpeta.toLowerCase()}.
-        </p>
-
-      </section>
-
-      {/* GRID */}
-      <section className="max-w-7xl mx-auto px-6 pb-24">
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
-          {imagenes.map((imagen, index) => (
-
-            <a
-              key={index}
-              href={`/joyas/images/${nombreCarpeta}/${imagen}`}
-              target="_blank"
-              className="overflow-hidden rounded-3xl shadow-lg cursor-pointer group"
-            >
-
-              <img
-                src={`/joyas/images/${nombreCarpeta}/${imagen}`}
-                alt={imagen}
-                className="w-full h-[420px] object-cover group-hover:scale-110 transition duration-500"
-              />
-
-            </a>
-
-          ))}
-
-        </div>
-
-      </section>
+      <CategoryContent category={category} images={imagenes} />
 
       {/* FOOTER */}
       <Footer />
@@ -89,4 +44,10 @@ export default async function CategoriaPage({ params }: Props) {
 
     </main>
   );
+}
+
+export function generateStaticParams() {
+  return getCatalogCategories().map((category) => ({
+    categoria: category.slug,
+  }));
 }

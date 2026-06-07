@@ -3,11 +3,11 @@
 import {
   createContext,
   useContext,
+  useEffect,
   useState,
   ReactNode,
 } from "react";
-
-type Language = "es" | "en";
+import { translations, type Language } from "@/app/lib/translations";
 
 interface LanguageContextType {
   language: Language;
@@ -27,6 +27,19 @@ export function LanguageProvider({
 
   const [language, setLanguage] = useState<Language>("es");
 
+  useEffect(() => {
+    const savedLanguage = window.localStorage.getItem("language");
+
+    if (savedLanguage === "es" || savedLanguage === "en") {
+      window.setTimeout(() => setLanguage(savedLanguage), 0);
+    }
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+    window.localStorage.setItem("language", language);
+  }, [language]);
+
   return (
     <LanguageContext.Provider
       value={{ language, setLanguage }}
@@ -38,4 +51,10 @@ export function LanguageProvider({
 
 export function useLanguage() {
   return useContext(LanguageContext);
+}
+
+export function useTranslations() {
+  const { language } = useLanguage();
+
+  return translations[language];
 }

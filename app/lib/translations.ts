@@ -1,0 +1,172 @@
+export type Language = "es" | "en";
+
+export const translations = {
+  es: {
+    nav: {
+      home: "Inicio",
+      about: "Acerca de nosotros",
+      catalog: "Catálogo",
+      contact: "Contáctenos",
+      products: "Productos",
+      openMenu: "Abrir menú",
+    },
+    home: {
+      eyebrow: "Colecciones hechas a mano",
+      title: "Descubre nuestras joyas",
+      description:
+        "Explora piezas únicas para celebrar momentos, herencias y detalles personales.",
+      cta: "Ver catálogo",
+    },
+    hero: {
+      brand: "Aydee Orfebre",
+      title: "Joyería artesanal con historia",
+      suffix: "elaboradas con detalle, tradición y atención personalizada.",
+      slides: [
+        "Argollas artesanales",
+        "Cadenas exclusivas",
+        "Topos elegantes",
+        "Candongas únicas",
+      ],
+      previous: "Ver joya anterior",
+      next: "Ver joya siguiente",
+      indicator: "Ver imagen",
+    },
+    catalog: {
+      eyebrow: "Piezas por colección",
+      title: "Nuestro Catálogo",
+      description:
+        "Descubre colecciones elaboradas artesanalmente, pensadas para acompañar momentos especiales con elegancia y autenticidad.",
+      cardDescription: "Descubre nuestra colección de",
+      viewMore: "Ver más",
+      collection: "Colección",
+      categoryDescription: "Descubre nuestra colección artesanal de",
+      categories: {
+        Anillos: "Anillos",
+        Aretes: "Aretes",
+        Argollas: "Argollas",
+        Cadena: "Cadena",
+        Candongas: "Candongas",
+        Pulseras: "Pulseras",
+      },
+    },
+    about: {
+      eyebrow: "Nuestra Historia",
+      title: "Tradición familiar en el arte de la orfebrería",
+      paragraphs: [
+        "Nuestra historia nace de la pasión por la orfebrería artesanal y más de cuatro décadas dedicadas al arte de crear joyas exclusivas.",
+        "Desde los años 70, nuestra fundadora inició su trayectoria trabajando junto a reconocidos joyeros de Cali, participando en importantes talleres como Platería Ramírez. Durante los años 80 y 90, hizo parte del equipo de prestigiosas joyerías como Victoria Gemologos y Joyería Lamour, consolidando una amplia experiencia en la elaboración de piezas únicas en oro y plata.",
+        "Posteriormente, en 1995 hasta el 2008, estuvo al frente de la administración de Joyería Majesty, fortaleciendo aún más su conocimiento en el mundo de la joyería y la atención personalizada a sus clientes.",
+        "Hoy en día, continuamos esta tradición desde nuestro taller artesanal, creando joyas personalizadas para quienes buscan elegancia, exclusividad, calidad y autenticidad en cada detalle.",
+      ],
+    },
+    contact: {
+      eyebrow: "Contáctanos",
+      title: "Estamos aquí para ayudarte",
+      description:
+        "Si tienes alguna petición, inquietud o deseas cotizar una joya personalizada, puedes comunicarte con nosotros a través del siguiente formulario.",
+      namePlaceholder: "Nombre completo",
+      emailPlaceholder: "Correo electrónico",
+      messagePlaceholder: "Escribe tu mensaje...",
+      submit: "Enviar solicitud",
+      sending: "Enviando...",
+      sent: "Solicitud enviada correctamente. Te contactaremos pronto.",
+      error: "No pudimos enviar tu solicitud. Intenta nuevamente en unos minutos.",
+      immediateTitle: "¿Prefieres atención inmediata?",
+      immediateDescription:
+        "También puedes comunicarte directamente con nosotros a través de WhatsApp para recibir asesoría personalizada.",
+      whatsapp: "Contactar por WhatsApp",
+      fallback: "Déjanos tus datos en el formulario y te contactaremos pronto.",
+    },
+    footer: {
+      designedBy: "Diseñado por Jose Luis Riofrio © 2026",
+    },
+    productCard: {
+      quote: "Cotizar",
+    },
+    whatsapp: "WhatsApp",
+  },
+  en: {
+    nav: {
+      home: "Home",
+      about: "About us",
+      catalog: "Catalog",
+      contact: "Contact us",
+      products: "Products",
+      openMenu: "Open menu",
+    },
+    home: {
+      eyebrow: "Handmade collections",
+      title: "Discover our jewelry",
+      description:
+        "Explore unique pieces created to celebrate moments, heirlooms, and personal details.",
+      cta: "View catalog",
+    },
+    hero: {
+      brand: "Aydee Orfebre",
+      title: "Handcrafted jewelry with history",
+      suffix: "made with detail, tradition, and personalized attention.",
+      slides: [
+        "Handcrafted wedding bands",
+        "Exclusive chains",
+        "Elegant stud earrings",
+        "Unique hoop earrings",
+      ],
+      previous: "View previous piece",
+      next: "View next piece",
+      indicator: "View image",
+    },
+    catalog: {
+      eyebrow: "Pieces by collection",
+      title: "Our Catalog",
+      description:
+        "Discover handcrafted collections designed to accompany special moments with elegance and authenticity.",
+      cardDescription: "Discover our collection of",
+      viewMore: "View more",
+      collection: "Collection",
+      categoryDescription: "Discover our handcrafted collection of",
+      categories: {
+        Anillos: "Rings",
+        Aretes: "Earrings",
+        Argollas: "Wedding bands",
+        Cadena: "Chains",
+        Candongas: "Hoop earrings",
+        Pulseras: "Bracelets",
+      },
+    },
+    about: {
+      eyebrow: "Our Story",
+      title: "A family tradition in the art of goldsmithing",
+      paragraphs: [
+        "Our story was born from a passion for handcrafted goldsmithing and more than four decades dedicated to creating exclusive jewelry.",
+        "Since the 1970s, our founder began her journey working alongside recognized jewelers in Cali, taking part in important workshops such as Platería Ramírez. During the 1980s and 1990s, she joined the teams of prestigious jewelry houses such as Victoria Gemologos and Joyería Lamour, building deep experience in creating unique gold and silver pieces.",
+        "Later, from 1995 to 2008, she led the administration of Joyería Majesty, strengthening her knowledge of the jewelry world and personalized customer service.",
+        "Today, we continue this tradition from our artisan workshop, creating custom jewelry for those who seek elegance, exclusivity, quality, and authenticity in every detail.",
+      ],
+    },
+    contact: {
+      eyebrow: "Contact us",
+      title: "We are here to help",
+      description:
+        "If you have a request, a question, or would like a quote for a custom piece, you can reach us through the form below.",
+      namePlaceholder: "Full name",
+      emailPlaceholder: "Email address",
+      messagePlaceholder: "Write your message...",
+      submit: "Send request",
+      sending: "Sending...",
+      sent: "Your request was sent successfully. We will contact you soon.",
+      error: "We could not send your request. Please try again in a few minutes.",
+      immediateTitle: "Prefer immediate attention?",
+      immediateDescription:
+        "You can also contact us directly through WhatsApp for personalized assistance.",
+      whatsapp: "Contact on WhatsApp",
+      fallback: "Leave your details in the form and we will contact you soon.",
+    },
+    footer: {
+      designedBy: "Designed by Jose Luis Riofrio © 2026",
+    },
+    productCard: {
+      quote: "Request quote",
+    },
+    whatsapp: "WhatsApp",
+  },
+} as const;

@@ -5,18 +5,29 @@ import { useState } from "react";
 import Navbar from "@/app/Navbar";
 import Footer from "@/app/Footer";
 import WhatsAppButton from "@/app/WhatsAppButton";
+import { useTranslations } from "@/app/context/LanguageContext";
+
+const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
+const whatsappHref = whatsappNumber
+  ? `https://wa.me/${whatsappNumber.replace(/\D/g, "")}`
+  : null;
 
 export default function ContactPage() {
+  const t = useTranslations();
 
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [mensaje, setMensaje] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle"
+  );
 
   const handleSubmit = async (
     e: React.FormEvent
   ) => {
 
     e.preventDefault();
+    setStatus("sending");
 
     try {
 
@@ -37,7 +48,7 @@ export default function ContactPage() {
 
       if (response.ok) {
 
-        alert("Solicitud enviada correctamente");
+        setStatus("sent");
 
         setNombre("");
         setEmail("");
@@ -45,30 +56,30 @@ export default function ContactPage() {
 
       } else {
 
-        alert("Error enviando solicitud");
+        setStatus("error");
 
       }
 
-    } catch (error) {
+    } catch {
 
-      alert("Error del servidor");
+      setStatus("error");
 
     }
   };
 
   return (
-    <main className="bg-white text-black min-h-screen">
+    <main className="page-shell text-[#17130d] min-h-screen">
 
       {/* NAVBAR */}
       <Navbar />
 
       {/* CONTENIDO */}
-      <section className="max-w-7xl mx-auto px-6 py-32">
+      <section className="max-w-7xl mx-auto px-6 py-36">
 
         <div className="grid md:grid-cols-2 gap-14 items-center">
 
           {/* IMAGEN */}
-          <div className="relative w-full h-[600px] rounded-3xl overflow-hidden shadow-2xl">
+          <div className="relative w-full h-[600px] overflow-hidden border border-[#efe7d8] shadow-[0_24px_60px_rgba(32,24,14,0.12)]">
             <Image
               src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?q=80&w=1200&auto=format&fit=crop"
               alt="Taller de orfebrería"
@@ -80,17 +91,16 @@ export default function ContactPage() {
           {/* FORMULARIO */}
           <div>
 
-            <span className="text-yellow-500 uppercase tracking-[4px] text-sm font-semibold">
-              Contáctanos
+            <span className="text-gold uppercase tracking-[0.34em] text-xs font-semibold">
+              {t.contact.eyebrow}
             </span>
 
-            <h1 className="text-5xl font-bold mt-4 mb-8 leading-tight">
-              Estamos aquí para ayudarte
+            <h1 className="font-display text-5xl md:text-6xl font-normal mt-4 mb-8 leading-tight">
+              {t.contact.title}
             </h1>
 
-            <p className="text-gray-600 text-lg mb-8">
-              Si tienes alguna petición, inquietud o deseas cotizar una joya personalizada,
-              puedes comunicarte con nosotros a través del siguiente formulario.
+            <p className="text-[#6f675c] text-lg leading-8 mb-8">
+              {t.contact.description}
             </p>
 
             {/* FORM */}
@@ -101,34 +111,50 @@ export default function ContactPage() {
 
               <input
                 type="text"
-                placeholder="Nombre completo"
+                required
+                placeholder={t.contact.namePlaceholder}
                 value={nombre}
                 onChange={(e) => setNombre(e.target.value)}
-                className="w-full border border-gray-300 rounded-xl px-5 py-4 focus:outline-none focus:border-yellow-500"
+                className="w-full border border-[#dfd3bf] bg-white/80 px-5 py-4 focus:outline-none focus:border-[var(--gold)]"
               />
 
               <input
                 type="email"
-                placeholder="Correo electrónico"
+                required
+                placeholder={t.contact.emailPlaceholder}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full border border-gray-300 rounded-xl px-5 py-4 focus:outline-none focus:border-yellow-500"
+                className="w-full border border-[#dfd3bf] bg-white/80 px-5 py-4 focus:outline-none focus:border-[var(--gold)]"
               />
 
               <textarea
-                placeholder="Escribe tu mensaje..."
+                required
+                placeholder={t.contact.messagePlaceholder}
                 rows={5}
                 value={mensaje}
                 onChange={(e) => setMensaje(e.target.value)}
-                className="w-full border border-gray-300 rounded-xl px-5 py-4 focus:outline-none focus:border-yellow-500"
+                className="w-full border border-[#dfd3bf] bg-white/80 px-5 py-4 focus:outline-none focus:border-[var(--gold)]"
               />
 
               <button
                 type="submit"
-                className="bg-black text-white px-8 py-4 rounded-full hover:bg-yellow-500 hover:text-black transition"
+                disabled={status === "sending"}
+                className="premium-button px-8 py-4 disabled:cursor-not-allowed disabled:opacity-70"
               >
-                Enviar solicitud
+                {status === "sending" ? t.contact.sending : t.contact.submit}
               </button>
+
+              {status === "sent" && (
+                <p className="border-l-2 border-[var(--gold)] bg-[#fff8ec] px-4 py-3 text-[#3f3526]">
+                  {t.contact.sent}
+                </p>
+              )}
+
+              {status === "error" && (
+                <p className="border-l-2 border-red-700 bg-red-50 px-4 py-3 text-red-900">
+                  {t.contact.error}
+                </p>
+              )}
 
             </form>
 
@@ -137,24 +163,30 @@ export default function ContactPage() {
         </div>
 
         {/* WHATSAPP DESTACADO */}
-        <div className="mt-24 bg-black text-white rounded-3xl p-10 text-center shadow-xl">
+        <div className="mt-24 border border-[#e7d7bb] bg-[#15110c] text-white p-10 text-center shadow-[0_24px_60px_rgba(32,24,14,0.12)]">
 
-          <h2 className="text-4xl font-bold mb-4">
-            ¿Prefieres atención inmediata?
+          <h2 className="font-display text-4xl md:text-5xl font-normal mb-4">
+            {t.contact.immediateTitle}
           </h2>
 
-          <p className="text-gray-300 text-lg mb-8">
-            También puedes comunicarte directamente con nosotros a través de WhatsApp
-            para recibir asesoría personalizada.
+          <p className="text-white/75 text-lg leading-8 mb-8 max-w-2xl mx-auto">
+            {t.contact.immediateDescription}
           </p>
 
-          <a
-            href="https://wa.me/57XXXXXXXXXX"
-            target="_blank"
-            className="bg-green-500 px-8 py-4 rounded-full text-white font-semibold hover:bg-green-400 transition"
-          >
-            Contactar por WhatsApp
-          </a>
+          {whatsappHref ? (
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center rounded-full bg-[#2f8f54] px-8 py-4 text-white font-semibold transition hover:bg-[#3fae68]"
+            >
+              {t.contact.whatsapp}
+            </a>
+          ) : (
+            <p className="text-white/60">
+              {t.contact.fallback}
+            </p>
+          )}
 
         </div>
 

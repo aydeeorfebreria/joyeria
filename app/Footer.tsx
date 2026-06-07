@@ -1,7 +1,13 @@
+"use client";
+
+import { useTranslations } from "@/app/context/LanguageContext";
+
 export default function Footer() {
-    return (
-      <footer className="text-center py-6 text-gray-400 text-sm">
-        Diseñado por Jose Luis Riofrio © 2026
-      </footer>
-    );
-  }
+  const t = useTranslations();
+
+  return (
+    <footer className="border-t border-[#efe7d8] bg-[#fffdf8] text-center py-6 text-[#8a7c68] text-sm">
+      {t.footer.designedBy}
+    </footer>
+  );
+}

@@ -1,11 +1,23 @@
+"use client";
+
+import { useTranslations } from "@/app/context/LanguageContext";
+
 export default function WhatsAppButton() {
-    return (
-      <a
-        href="https://wa.me/57XXXXXXXXXX"
-        target="_blank"
-        className="fixed bottom-6 right-6 bg-green-500 text-white px-4 py-3 rounded-full shadow-lg hover:bg-green-400"
-      >
-        WhatsApp
-      </a>
-    );
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
+  const t = useTranslations();
+
+  if (!whatsappNumber) {
+    return null;
   }
+
+  return (
+    <a
+      href={`https://wa.me/${whatsappNumber.replace(/\D/g, "")}`}
+      target="_blank"
+      rel="noreferrer"
+      className="fixed bottom-6 right-6 rounded-full bg-[#2f8f54] px-4 py-3 text-white shadow-[0_12px_30px_rgba(47,143,84,0.25)] transition hover:bg-[#3fae68]"
+    >
+      {t.whatsapp}
+    </a>
+  );
+}

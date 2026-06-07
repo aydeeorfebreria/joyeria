@@ -1,35 +1,20 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
-import { useLanguage } from "@/app/context/LanguageContext";
+import { useTranslations } from "@/app/context/LanguageContext";
 
 const slides = [
   {
-    texto: {
-      es: "Argollas artesanales",
-      en: "Handcrafted wedding bands",
-    },
     imagen: "/hero/slide1.jpg",
   },
   {
-    texto: {
-      es: "Cadenas exclusivas",
-      en: "Exclusive chains",
-    },
     imagen: "/hero/slide2.jpg",
   },
   {
-    texto: {
-      es: "Topos elegantes",
-      en: "Elegant earrings",
-    },
     imagen: "/hero/slide3.jpg",
   },
   {
-    texto: {
-      es: "Candongas únicas",
-      en: "Unique hoop earrings",
-    },
     imagen: "/hero/slide4.jpg",
   },
 ];
@@ -37,7 +22,7 @@ const slides = [
 export default function Carousel() {
 
   const [index, setIndex] = useState(0);
-  const { language } = useLanguage();
+  const t = useTranslations();
 
   useEffect(() => {
 
@@ -61,31 +46,43 @@ export default function Carousel() {
 
   return (
 
-    <section className="relative h-[75vh] overflow-hidden pt-24">
+    <section className="relative h-[78vh] min-h-[560px] overflow-hidden pt-20 bg-[#16110c]">
 
       {/* IMAGEN */}
-      <img
+      <Image
         src={slides[index].imagen}
-        alt={slides[index].texto[language]}
-        className="absolute inset-0 w-full h-full object-contain bg-white"
+        alt={t.hero.slides[index]}
+        fill
+        priority={index === 0}
+        sizes="100vw"
+        className="absolute inset-0 w-full h-full object-cover opacity-90"
       />
 
       {/* OVERLAY OSCURO */}
-      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/28 to-black/60" />
 
       {/* CONTENIDO */}
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
 
-        <h1 className="text-white text-5xl md:text-7xl font-bold max-w-5xl">
-        {slides[index].texto[language]}
+        <p className="mb-5 text-xs md:text-sm uppercase tracking-[0.38em] text-[#f1d58b]">
+          {t.hero.brand}
+        </p>
+
+        <h1 className="font-display text-white text-5xl md:text-7xl font-normal max-w-5xl leading-tight">
+          {t.hero.title}
         </h1>
+
+        <p className="mt-6 max-w-2xl text-base md:text-xl leading-8 text-white/85">
+          {t.hero.slides[index]} {t.hero.suffix}
+        </p>
 
       </div>
 
       {/* IZQUIERDA */}
       <button
         onClick={prevSlide}
-        className="absolute left-6 top-1/2 -translate-y-1/2 text-white text-5xl z-20"
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-black/10 text-3xl text-white/45 backdrop-blur-sm transition hover:bg-black/25 hover:text-white/85"
+        aria-label={t.hero.previous}
       >
         ←
       </button>
@@ -93,7 +90,8 @@ export default function Carousel() {
       {/* DERECHA */}
       <button
         onClick={nextSlide}
-        className="absolute right-6 top-1/2 -translate-y-1/2 text-white text-5xl z-20"
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-black/10 text-3xl text-white/45 backdrop-blur-sm transition hover:bg-black/25 hover:text-white/85"
+        aria-label={t.hero.next}
       >
         →
       </button>
@@ -106,11 +104,12 @@ export default function Carousel() {
           <button
             key={i}
             onClick={() => setIndex(i)}
-            className={`w-4 h-4 rounded-full ${
+            aria-label={`${t.hero.indicator} ${i + 1}`}
+            className={`h-2.5 rounded-full transition-all ${
               i === index
-                ? "bg-yellow-500"
+                ? "w-8 bg-[#d4af37]"
                 : "bg-white/50"
-            }`}
+            } w-2.5`}
           />
 
         ))}
