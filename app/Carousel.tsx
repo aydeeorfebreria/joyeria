@@ -81,19 +81,19 @@ export default function Carousel() {
       {/* IZQUIERDA */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-black/10 text-3xl text-white/45 backdrop-blur-sm transition hover:bg-black/25 hover:text-white/85"
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white w-12 h-12 rounded-full flex items-center justify-center z-20 transition duration-300"
         aria-label={t.hero.previous}
       >
-        ←
+        ❮
       </button>
 
       {/* DERECHA */}
       <button
         onClick={nextSlide}
-        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-black/10 text-3xl text-white/45 backdrop-blur-sm transition hover:bg-black/25 hover:text-white/85"
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white w-12 h-12 rounded-full flex items-center justify-center z-20 transition duration-300"
         aria-label={t.hero.next}
       >
-        →
+        ❯
       </button>
 
       {/* INDICADORES */}
