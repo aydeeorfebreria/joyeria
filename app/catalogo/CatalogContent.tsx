@@ -84,6 +84,39 @@ export default function CatalogContent({ categories }: CatalogContentProps) {
         </div>
 
       </section>
+
+      {/* CUSTOM JEWELRY CTA */}
+      <section className="max-w-6xl mx-auto px-6 pb-24">
+
+        <div className="rounded-3xl bg-black text-white p-10 md:p-16 text-center shadow-2xl">
+
+          <h2 className="font-display text-4xl md:text-5xl font-normal mb-6">
+            {t.catalog.customTitle}
+          </h2>
+
+          <p className="max-w-3xl mx-auto text-lg text-white/80 leading-8 mb-10">
+            {t.catalog.customDescription}
+          </p>
+
+          <div className="flex flex-col md:flex-row justify-center gap-6 mb-10 text-[#d4af37] font-medium">
+
+            <span>✨ {t.catalog.exclusiveDesigns}</span>
+            <span>✨ {t.catalog.artisanCrafting}</span>
+            <span>✨ {t.catalog.personalizedService}</span>
+
+          </div>
+
+          <Link
+            href="/contact"
+            className="inline-flex items-center rounded-full bg-[#d4af37] px-8 py-4 text-black font-semibold transition hover:scale-105 hover:bg-[#e5c35a]"
+          >
+            {t.catalog.customButton}
+          </Link>
+
+        </div>
+
+      </section>
+
     </>
   );
 }

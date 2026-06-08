@@ -17,6 +17,80 @@ export default function Home() {
       {/* HERO / CAROUSEL */}
       <Carousel />
 
+      {/* EXPERIENCE SECTION */}
+        <section className="py-20 px-6 bg-white">
+
+        <div className="max-w-6xl mx-auto text-center">
+
+          <p className="mb-4 text-xs uppercase tracking-[0.34em] text-gold">
+            AYDEE ORFEBRE
+          </p>
+
+          <h2 className="font-display text-4xl md:text-5xl font-normal mb-8">
+            {t.home.experienceTitle}
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+
+          <div className="bg-white border border-[#efe7d8] rounded-2xl p-6 shadow-sm hover:shadow-lg transition duration-300">
+
+            <div className="text-4xl mb-4">
+              ✨
+            </div>
+
+            <p className="font-medium text-lg">
+              {t.home.feature1}
+            </p>
+
+          </div>
+
+          <div className="bg-white border border-[#efe7d8] rounded-2xl p-6 shadow-sm hover:shadow-lg transition duration-300">
+
+            <div className="text-4xl mb-4">
+              💎
+            </div>
+
+            <p className="font-medium text-lg">
+              {t.home.feature2}
+            </p>
+
+          </div>
+
+          <div className="bg-white border border-[#efe7d8] rounded-2xl p-6 shadow-sm hover:shadow-lg transition duration-300">
+
+            <div className="text-4xl mb-4">
+              🔨
+            </div>
+
+            <p className="font-medium text-lg">
+              {t.home.feature3}
+            </p>
+
+          </div>
+
+          <div className="bg-white border border-[#efe7d8] rounded-2xl p-6 shadow-sm hover:shadow-lg transition duration-300">
+
+            <div className="text-4xl mb-4">
+              🤝
+            </div>
+
+            <p className="font-medium text-lg">
+              {t.home.feature4}
+            </p>
+
+          </div>
+
+</div>
+
+          <p className="max-w-3xl mx-auto text-[#6f675c] text-lg leading-8">
+            {t.home.experienceDescription}
+          </p>
+          <div className="w-24 h-[2px] bg-[#d4af37] mx-auto mt-8"></div>
+
+        </div>
+
+        </section>
+
       {/* CTA CATALOGO */}
       <section className="py-20 px-6 text-center">
         <p className="mb-3 text-xs uppercase tracking-[0.34em] text-gold">

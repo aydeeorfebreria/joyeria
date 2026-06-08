@@ -16,20 +16,31 @@ export const translations = {
       description:
         "Explora piezas únicas para celebrar momentos, herencias y detalles personales.",
       cta: "Ver catálogo",
+      experienceTitle: "Más de 40 años de experiencia",
+      experienceDescription:
+        "Desde los años 70 creando joyas únicas para nuestros clientes, combinando tradición, experiencia y exclusividad en cada pieza.",
+      
+      feature1: "Diseños personalizados",
+      feature2: "Oro y plata",
+      feature3: "Elaboración artesanal",
+      feature4: "Atención personalizada",
     },
     hero: {
-      brand: "Aydee Orfebre",
-      title: "Joyería artesanal con historia",
-      suffix: "elaboradas con detalle, tradición y atención personalizada.",
+      brand: "AYDEE ORFEBRE",
+    
+      title: "Joyas artesanales con historia y exclusividad",
+    
       slides: [
-        "Argollas artesanales",
-        "Cadenas exclusivas",
-        "Topos elegantes",
-        "Candongas únicas",
+        "Argollas personalizadas para momentos inolvidables.",
+        "Cadenas elaboradas a mano con acabados únicos.",
+        "Topos elegantes para resaltar cada detalle.",
+        "Candongas exclusivas inspiradas en la tradición orfebre.",
       ],
-      previous: "Ver joya anterior",
-      next: "Ver joya siguiente",
-      indicator: "Ver imagen",
+    
+      previous: "Anterior",
+      next: "Siguiente",
+      indicator: "Ir al slide",
+      catalogButton: "Ver catálogo",
     },
     catalog: {
       eyebrow: "Piezas por colección",
@@ -38,6 +49,13 @@ export const translations = {
         "Descubre colecciones elaboradas artesanalmente, pensadas para acompañar momentos especiales con elegancia y autenticidad.",
       cardDescription: "Descubre nuestra colección de",
       viewMore: "Ver más",
+      customTitle: "¿No encuentras exactamente lo que buscas?",
+      customDescription:
+        "Creamos joyas personalizadas en oro y plata según tus ideas, gustos y necesidades. Cada pieza es elaborada artesanalmente con dedicación y atención al detalle.",
+      customButton: "Solicitar cotización",
+      exclusiveDesigns: "Diseños exclusivos",
+      artisanCrafting: "Elaboración artesanal",
+      personalizedService: "Atención personalizada",
       collection: "Colección",
       categoryDescription: "Descubre nuestra colección artesanal de",
       categories: {
@@ -100,20 +118,31 @@ export const translations = {
       description:
         "Explore unique pieces created to celebrate moments, heirlooms, and personal details.",
       cta: "View catalog",
+      experienceTitle: "More than 40 years of experience",
+      experienceDescription:
+        "Since the 1970s creating unique jewelry for our clients, combining tradition, experience, and exclusivity in every piece.",
+
+      feature1: "Custom Designs",
+      feature2: "Gold and Silver",
+      feature3: "Handcrafted Jewelry",
+      feature4: "Personalized Service",
     },
     hero: {
-      brand: "Aydee Orfebre",
-      title: "Handcrafted jewelry with history",
-      suffix: "made with detail, tradition, and personalized attention.",
+      brand: "AYDEE GOLDSMITH",
+    
+      title: "Handcrafted jewelry with history and exclusivity",
+    
       slides: [
-        "Handcrafted wedding bands",
-        "Exclusive chains",
-        "Elegant stud earrings",
-        "Unique hoop earrings",
+        "Custom wedding bands for unforgettable moments.",
+        "Handcrafted chains with unique finishes.",
+        "Elegant studs designed to highlight every detail.",
+        "Exclusive hoop earrings inspired by goldsmith tradition.",
       ],
-      previous: "View previous piece",
-      next: "View next piece",
-      indicator: "View image",
+    
+      previous: "Previous",
+      next: "Next",
+      indicator: "Go to slide",
+      catalogButton: "View Catalog",
     },
     catalog: {
       eyebrow: "Pieces by collection",
@@ -122,6 +151,13 @@ export const translations = {
         "Discover handcrafted collections designed to accompany special moments with elegance and authenticity.",
       cardDescription: "Discover our collection of",
       viewMore: "View more",
+      customTitle: "Can't find exactly what you're looking for?",
+      customDescription:
+        "We create custom gold and silver jewelry based on your ideas, preferences, and needs. Every piece is handcrafted with dedication and attention to detail.",
+      customButton: "Request a Quote",
+      exclusiveDesigns: "Exclusive Designs",
+      artisanCrafting: "Handcrafted Jewelry",
+      personalizedService: "Personalized Service",
       collection: "Collection",
       categoryDescription: "Discover our handcrafted collection of",
       categories: {

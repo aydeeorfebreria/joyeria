@@ -73,9 +73,16 @@ export default function Carousel() {
         </h1>
 
         <p className="mt-6 max-w-2xl text-base md:text-xl leading-8 text-white/85">
-          {t.hero.slides[index]} {t.hero.suffix}
+          {t.hero.slides[index]}
         </p>
-
+        <div className="mt-10">
+          <a
+            href="/catalogo"
+            className="inline-flex items-center rounded-full bg-[#d4af37] px-8 py-4 text-black font-semibold transition hover:scale-105 hover:bg-[#e5c35a]"
+          >
+            {t.hero.catalogButton}
+          </a>
+        </div>
       </div>
 
       {/* IZQUIERDA */}
