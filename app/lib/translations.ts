@@ -24,6 +24,21 @@ export const translations = {
       feature2: "Oro y plata",
       feature3: "Elaboración artesanal",
       feature4: "Atención personalizada",
+      testimonialsTitle: "Lo que dicen nuestros clientes",
+      testimonial1:
+        "Excelente calidad y atención personalizada. Mi anillo quedó exactamente como lo imaginaba.",
+
+      testimonial1Author: "María G. · Cali",
+
+      testimonial2:
+        "Un trabajo impecable. Se nota la experiencia y el cuidado en cada detalle.",
+
+      testimonial2Author: "Carlos R. · Palmira",
+
+      testimonial3:
+        "La cadena personalizada quedó mejor de lo que esperaba. Totalmente recomendados.",
+
+      testimonial3Author: "Andrea M. · Bogotá",
     },
     hero: {
       brand: "AYDEE ORFEBRE",
@@ -58,6 +73,12 @@ export const translations = {
       personalizedService: "Atención personalizada",
       collection: "Colección",
       categoryDescription: "Descubre nuestra colección artesanal de",
+      collectionOrfebreria: "Orfebrería",
+      collectionOrfebreriaDescription:
+      "Joyas artesanales en oro y plata elaboradas con tradición y experiencia.",
+      collectionBisuteria: "Bisutería",
+      collectionBisuteriaDescription:
+      "Accesorios elegantes para complementar cualquier estilo y ocasión.",
       categories: {
         Anillos: "Anillos",
         Aretes: "Aretes",
@@ -65,6 +86,9 @@ export const translations = {
         Cadena: "Cadena",
         Candongas: "Candongas",
         Pulseras: "Pulseras",
+        Collares: "Collares",
+        Sets: "Sets",
+        Accesorios: "Accesorios",
       },
     },
     about: {
@@ -126,6 +150,21 @@ export const translations = {
       feature2: "Gold and Silver",
       feature3: "Handcrafted Jewelry",
       feature4: "Personalized Service",
+      testimonialsTitle: "What our clients say",
+      testimonial1:
+        "Excellent quality and personalized service. My ring turned out exactly as I imagined.",
+
+      testimonial1Author: "María G. · Cali",
+
+      testimonial2:
+        "Impeccable craftsmanship. You can truly see the experience and attention to detail.",
+
+      testimonial2Author: "Carlos R. · Palmira",
+
+      testimonial3:
+        "The custom chain exceeded my expectations. Highly recommended.",
+
+      testimonial3Author: "Andrea M. · Bogotá",
     },
     hero: {
       brand: "AYDEE GOLDSMITH",
@@ -160,6 +199,14 @@ export const translations = {
       personalizedService: "Personalized Service",
       collection: "Collection",
       categoryDescription: "Discover our handcrafted collection of",
+      collectionOrfebreria: "Goldsmithing",
+      collectionOrfebreriaDescription:
+      "Handcrafted gold and silver jewelry created with tradition and expertise.",
+
+      collectionBisuteria: "Fashion Jewelry",
+
+      collectionBisuteriaDescription:
+      "Elegant accessories designed to complement any style and occasion.",
       categories: {
         Anillos: "Rings",
         Aretes: "Earrings",
@@ -167,6 +214,9 @@ export const translations = {
         Cadena: "Chains",
         Candongas: "Hoop earrings",
         Pulseras: "Bracelets",
+        Collares: "Necklaces",
+        Sets: "Sets",
+        Accesorios: "Accessories",
       },
     },
     about: {

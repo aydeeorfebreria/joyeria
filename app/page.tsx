@@ -111,6 +111,75 @@ export default function Home() {
         </Link>
       </section>
 
+      {/* TESTIMONIALS */}
+      <section className="py-20 px-6 bg-[#faf8f4]">
+
+      <div className="max-w-6xl mx-auto text-center">
+
+        <p className="mb-4 text-xs uppercase tracking-[0.34em] text-gold">
+          AYDEE ORFEBRE
+        </p>
+
+        <h2 className="font-display text-4xl md:text-5xl font-normal mb-14">
+          {t.home.testimonialsTitle}
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-8">
+
+        <div className="bg-white rounded-3xl p-8 border border-[#efe7d8] shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-300">
+
+            <div className="text-[#d4af37] text-2xl mb-4">
+              ★★★★★
+            </div>
+
+            <p className="text-[#6f675c] text-sm leading-8 mb-6">
+              "{t.home.testimonial1}"
+            </p>
+
+            <span className="font-semibold">
+              {t.home.testimonial1Author}
+            </span>
+
+          </div>
+
+          <div className="bg-white rounded-3xl p-8 border border-[#efe7d8] shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-300">
+
+            <div className="text-[#d4af37] text-2xl mb-4">
+              ★★★★★
+            </div>
+
+            <p className="text-[#6f675c] text-sm leading-8 mb-6">
+              "{t.home.testimonial2}"
+            </p>
+
+            <span className="font-semibold">
+              {t.home.testimonial2Author}
+            </span>
+
+          </div>
+
+          <div className="bg-white rounded-3xl p-8 border border-[#efe7d8] shadow-sm hover:-translate-y-1 hover:shadow-lg transition duration-300">
+
+            <div className="text-[#d4af37] text-2xl mb-4">
+              ★★★★★
+            </div>
+
+            <p className="text-[#6f675c] text-sm leading-8 mb-6">
+              "{t.home.testimonial3}"
+            </p>
+
+            <span className="font-semibold">
+              {t.home.testimonial3Author}
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      </section>
+
       <Footer />
       <WhatsAppButton />
     </main>
