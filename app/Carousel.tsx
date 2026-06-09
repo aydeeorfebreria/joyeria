@@ -164,6 +164,7 @@ export default function Carousel() {
       {/* INDICADORES */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
         {slides.map((_, i) => (
+
           <button
             key={i}
             onClick={() => goTo(i)}
@@ -174,7 +175,9 @@ export default function Carousel() {
             }`}
             aria-label={`Ir a slide ${i + 1}`}
           />
+
         ))}
+
       </div>
 
       {/* CONTADOR */}

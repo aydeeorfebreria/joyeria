@@ -11,6 +11,7 @@ type Props = {
 
 export default async function CategoriaPage({ params }: Props) {
   const { categoria } = await params;
+  const category = getCategoryBySlug(categoria);
 
   const category = getCategoryBySlug(categoria);
   if (!category) notFound();

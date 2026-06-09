@@ -43,6 +43,60 @@ const contactInfo = [
 ];
 
 export default function ContactPage() {
+  const t = useTranslations();
+
+  const [nombre, setNombre] = useState("");
+  const [email, setEmail] = useState("");
+  const [mensaje, setMensaje] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle"
+  );
+
+  const handleSubmit = async (
+    e: React.FormEvent
+  ) => {
+
+    e.preventDefault();
+    setStatus("sending");
+
+    try {
+
+      const response = await fetch("/api/contact", {
+
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({
+          nombre,
+          email,
+          mensaje,
+        }),
+      });
+
+      if (response.ok) {
+
+        setStatus("sent");
+
+        setNombre("");
+        setEmail("");
+        setMensaje("");
+
+      } else {
+
+        setStatus("error");
+
+      }
+
+    } catch {
+
+      setStatus("error");
+
+    }
+  };
+
   return (
     <main className="bg-ivory">
       <Navbar />

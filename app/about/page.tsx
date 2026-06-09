@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/app/Navbar";
@@ -39,6 +41,8 @@ const values = [
 ];
 
 export default function AboutPage() {
+  const t = useTranslations();
+
   return (
     <main className="bg-ivory">
       <Navbar />

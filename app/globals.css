@@ -89,3 +89,48 @@ body {
   color: #0A0A0A;
   font-family: var(--font-raleway), system-ui, sans-serif;
 }
+
+.font-display {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.text-gold {
+  color: var(--gold);
+}
+
+.bg-gold {
+  background: var(--gold);
+}
+
+.border-gold {
+  border-color: var(--gold);
+}
+
+.page-shell {
+  background:
+    linear-gradient(180deg, rgba(255, 248, 236, 0.92), rgba(255, 253, 248, 1) 32%),
+    var(--background);
+}
+
+.premium-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--charcoal);
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.premium-button:hover {
+  background: var(--gold);
+  color: var(--charcoal);
+  box-shadow: 0 14px 28px rgba(184, 138, 42, 0.22);
+  transform: translateY(-1px);
+}
