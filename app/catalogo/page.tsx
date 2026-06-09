@@ -1,117 +1,98 @@
-import fs from "fs";
-import path from "path";
 import Link from "next/link";
-
+import Image from "next/image";
 import Navbar from "@/app/Navbar";
 import Footer from "@/app/Footer";
 import WhatsAppButton from "@/app/WhatsAppButton";
+import { getCatalogCategories } from "@/app/lib/catalog";
 
 export default function CatalogoPage() {
-
-  // Ruta base
-  const rutaBase = path.join(process.cwd(), "public/joyas/images");
-
-  // Leer carpetas
-  const categorias = fs.readdirSync(rutaBase).filter((item) => {
-    const rutaCompleta = path.join(rutaBase, item);
-    return fs.statSync(rutaCompleta).isDirectory();
-  });
-
-  // Obtener imagen principal de cada carpeta
-  const dataCategorias = categorias.map((categoria) => {
-
-    const rutaCategoria = path.join(rutaBase, categoria);
-
-    const archivos = fs.readdirSync(rutaCategoria);
-
-    const imagenPrincipal = archivos.find((archivo) =>
-      [".jpg", ".jpeg", ".png", ".webp"].includes(
-        path.extname(archivo).toLowerCase()
-      )
-    );
-
-    return {
-      nombre: categoria,
-      imagen: `/joyas/images/${categoria}/${imagenPrincipal}`,
-    };
-  });
+  const categories = getCatalogCategories();
 
   return (
-    <main className="bg-white text-black min-h-screen">
-
-      {/* NAVBAR */}
+    <main className="bg-ivory">
       <Navbar />
 
       {/* HEADER */}
-      <section className="pt-32 pb-16 text-center px-6">
+      <section className="bg-obsidian pt-36 pb-20 px-6 text-center relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
 
-        <h1 className="text-5xl font-bold mb-4 text-yellow-500">
-          Nuestro Catálogo
+        <span className="text-gold text-xs tracking-[6px] uppercase font-sans">
+          Aydee Orfebre
+        </span>
+        <h1 className="font-heading text-6xl md:text-7xl font-light text-white mt-3 mb-3">
+          Nuestro <em className="not-italic text-gold">Catálogo</em>
         </h1>
-
-        <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-          Descubre nuestras colecciones elaboradas artesanalmente.
+        <div className="w-10 h-px bg-gold mx-auto mt-6 mb-6" />
+        <p className="text-white/55 text-lg max-w-xl mx-auto font-sans">
+          Cada pieza es elaborada artesanalmente con la mayor dedicación y los mejores materiales.
         </p>
-
       </section>
 
-      {/* GRID CATEGORIAS */}
-      <section className="max-w-7xl mx-auto px-6 pb-24">
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-
-          {dataCategorias.map((categoria, index) => (
-
-            <div
-              key={index}
-              className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 hover:-translate-y-2"
+      {/* GRILLA DE CATEGORÍAS */}
+      <section className="max-w-7xl mx-auto px-6 py-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {categories.map((cat) => (
+            <Link
+              key={cat.slug}
+              href={`/catalogo/${cat.slug}`}
+              className="group relative h-[460px] overflow-hidden bg-charcoal block"
             >
+              <Image
+                src={cat.image}
+                alt={cat.name}
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-obsidian/88 via-obsidian/15 to-transparent" />
 
-              {/* IMAGEN */}
-              <div className="overflow-hidden">
-
-                <img
-                  src={categoria.imagen}
-                  alt={categoria.nombre}
-                  className="w-full h-[420px] object-cover hover:scale-110 transition duration-500"
-                />
-
-              </div>
-
-              {/* INFO */}
-              <div className="p-6">
-
-                <h2 className="text-3xl font-bold mb-4">
-                  {categoria.nombre}
-                </h2>
-
-                <p className="text-gray-500 mb-6">
-                  Descubre nuestra colección de {categoria.nombre.toLowerCase()}.
+              <div className="absolute bottom-0 left-0 right-0 p-7">
+                <p className="text-gold text-[10px] tracking-[5px] uppercase mb-2 font-sans">
+                  Colección artesanal
                 </p>
-
-                <Link
-                  href={`/catalogo/${categoria.nombre.toLowerCase()}`}
-                  className="bg-black text-white px-6 py-3 rounded-full hover:bg-yellow-500 hover:text-black transition"
-                >
-                  Ver más
-                </Link>
-
+                <h2 className="font-heading text-4xl font-light text-white">
+                  {cat.name}
+                </h2>
+                <div className="flex items-center gap-2 mt-5 text-white/50 text-[10px] tracking-[3px] uppercase font-sans group-hover:text-gold transition-colors duration-300">
+                  <span>Ver colección</span>
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    className="group-hover:translate-x-1.5 transition-transform duration-300"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </div>
               </div>
-
-            </div>
-
+            </Link>
           ))}
-
         </div>
-
       </section>
 
-      {/* FOOTER */}
+      {/* CTA */}
+      <section className="bg-obsidian py-16 px-6 text-center relative">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/20 to-transparent" />
+        <h2 className="font-heading text-4xl font-light text-white mb-4">
+          ¿No encuentras lo que buscas?
+        </h2>
+        <p className="text-white/50 mb-8 font-sans text-sm">
+          Diseñamos tu joya a medida, sin límites.
+        </p>
+        <Link
+          href="/contact"
+          className="inline-block bg-gold text-obsidian px-10 py-4 text-xs tracking-[4px] uppercase hover:bg-gold-light transition-colors duration-300"
+        >
+          Solicitar diseño personalizado
+        </Link>
+      </section>
+
       <Footer />
-
-      {/* WHATSAPP */}
       <WhatsAppButton />
-
     </main>
   );
 }
