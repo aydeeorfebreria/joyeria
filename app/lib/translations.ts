@@ -19,7 +19,6 @@ export const translations = {
       experienceTitle: "Más de 40 años de experiencia",
       experienceDescription:
         "Desde los años 70 creando joyas únicas para nuestros clientes, combinando tradición, experiencia y exclusividad en cada pieza.",
-      
       feature1: "Diseños personalizados",
       feature2: "Oro y plata",
       feature3: "Elaboración artesanal",
@@ -27,31 +26,23 @@ export const translations = {
       testimonialsTitle: "Lo que dicen nuestros clientes",
       testimonial1:
         "Excelente calidad y atención personalizada. Mi anillo quedó exactamente como lo imaginaba.",
-
       testimonial1Author: "María G. · Cali",
-
       testimonial2:
         "Un trabajo impecable. Se nota la experiencia y el cuidado en cada detalle.",
-
       testimonial2Author: "Carlos R. · Palmira",
-
       testimonial3:
         "La cadena personalizada quedó mejor de lo que esperaba. Totalmente recomendados.",
-
       testimonial3Author: "Andrea M. · Bogotá",
     },
     hero: {
       brand: "AYDEE ORFEBRE",
-    
       title: "Joyas artesanales con historia y exclusividad",
-    
       slides: [
         "Argollas personalizadas para momentos inolvidables.",
         "Cadenas elaboradas a mano con acabados únicos.",
         "Topos elegantes para resaltar cada detalle.",
         "Candongas exclusivas inspiradas en la tradición orfebre.",
       ],
-    
       previous: "Anterior",
       next: "Siguiente",
       indicator: "Ir al slide",
@@ -75,10 +66,10 @@ export const translations = {
       categoryDescription: "Descubre nuestra colección artesanal de",
       collectionOrfebreria: "Orfebrería",
       collectionOrfebreriaDescription:
-      "Joyas artesanales en oro y plata elaboradas con tradición y experiencia.",
+        "Joyas artesanales en oro y plata elaboradas con tradición y experiencia.",
       collectionBisuteria: "Bisutería",
       collectionBisuteriaDescription:
-      "Accesorios elegantes para complementar cualquier estilo y ocasión.",
+        "Accesorios elegantes para complementar cualquier estilo y ocasión.",
       categories: {
         Anillos: "Anillos",
         Aretes: "Aretes",
@@ -145,7 +136,6 @@ export const translations = {
       experienceTitle: "More than 40 years of experience",
       experienceDescription:
         "Since the 1970s creating unique jewelry for our clients, combining tradition, experience, and exclusivity in every piece.",
-
       feature1: "Custom Designs",
       feature2: "Gold and Silver",
       feature3: "Handcrafted Jewelry",
@@ -153,31 +143,23 @@ export const translations = {
       testimonialsTitle: "What our clients say",
       testimonial1:
         "Excellent quality and personalized service. My ring turned out exactly as I imagined.",
-
       testimonial1Author: "María G. · Cali",
-
       testimonial2:
         "Impeccable craftsmanship. You can truly see the experience and attention to detail.",
-
       testimonial2Author: "Carlos R. · Palmira",
-
       testimonial3:
         "The custom chain exceeded my expectations. Highly recommended.",
-
       testimonial3Author: "Andrea M. · Bogotá",
     },
     hero: {
       brand: "AYDEE GOLDSMITH",
-    
       title: "Handcrafted jewelry with history and exclusivity",
-    
       slides: [
         "Custom wedding bands for unforgettable moments.",
         "Handcrafted chains with unique finishes.",
         "Elegant studs designed to highlight every detail.",
         "Exclusive hoop earrings inspired by goldsmith tradition.",
       ],
-    
       previous: "Previous",
       next: "Next",
       indicator: "Go to slide",
@@ -201,12 +183,10 @@ export const translations = {
       categoryDescription: "Discover our handcrafted collection of",
       collectionOrfebreria: "Goldsmithing",
       collectionOrfebreriaDescription:
-      "Handcrafted gold and silver jewelry created with tradition and expertise.",
-
+        "Handcrafted gold and silver jewelry created with tradition and expertise.",
       collectionBisuteria: "Fashion Jewelry",
-
       collectionBisuteriaDescription:
-      "Elegant accessories designed to complement any style and occasion.",
+        "Elegant accessories designed to complement any style and occasion.",
       categories: {
         Anillos: "Rings",
         Aretes: "Earrings",

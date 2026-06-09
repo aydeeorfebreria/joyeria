@@ -1,8 +1,8 @@
-import fs from "fs";
-import path from "path";
+import fs from 'fs';
+import path from 'path';
 
-const IMAGE_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".webp"]);
-const CATALOG_PATH = path.join(process.cwd(), "public/joyas/images");
+const IMAGE_EXTENSIONS = new Set(['.jpg', '.jpeg', '.png', '.webp']);
+const CATALOG_PATH = path.join(process.cwd(), 'public/joyas/images');
 
 export type CatalogCategory = {
   name: string;
@@ -17,11 +17,11 @@ export type CatalogImage = {
 
 export function getCategorySlug(name: string) {
   return name
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
     .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
 }
 
 function isImageFile(fileName: string) {
@@ -29,9 +29,7 @@ function isImageFile(fileName: string) {
 }
 
 function getPublicImagePath(categoryName: string, imageName: string) {
-  return `/joyas/images/${encodeURIComponent(categoryName)}/${encodeURIComponent(
-    imageName
-  )}`;
+  return `/joyas/images/${encodeURIComponent(categoryName)}/${encodeURIComponent(imageName)}`;
 }
 
 export function getCatalogCategories(): CatalogCategory[] {
@@ -49,9 +47,7 @@ export function getCatalogCategories(): CatalogCategory[] {
       const categoryPath = path.join(CATALOG_PATH, categoryName);
       const imageName = fs.readdirSync(categoryPath).find(isImageFile);
 
-      if (!imageName) {
-        return null;
-      }
+      if (!imageName) return null;
 
       return {
         name: categoryName,
@@ -60,7 +56,7 @@ export function getCatalogCategories(): CatalogCategory[] {
       };
     })
     .filter((category): category is CatalogCategory => category !== null)
-    .sort((a, b) => a.name.localeCompare(b.name, "es"));
+    .sort((a, b) => a.name.localeCompare(b.name, 'es'));
 }
 
 export function getCategoryBySlug(slug: string) {
@@ -77,7 +73,7 @@ export function getCategoryImages(categoryName: string): CatalogImage[] {
   return fs
     .readdirSync(categoryPath)
     .filter(isImageFile)
-    .sort((a, b) => a.localeCompare(b, "es"))
+    .sort((a, b) => a.localeCompare(b, 'es'))
     .map((imageName) => ({
       name: imageName,
       src: getPublicImagePath(categoryName, imageName),
